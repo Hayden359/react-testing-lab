@@ -3,11 +3,12 @@ import React from "react";
 function AddTransactionForm({postTransaction}) {
   function submitForm(e){
     e.preventDefault()
+    const formData = new FormData(e.currentTarget)
     const newTransaction = {
-      date: e.target.date.value,
-      description: e.target.description.value,
-      category: e.target.category.value,
-      amount: e.target.amount.value
+      date: formData.get("date"),
+      description: formData.get("description"),
+      category: formData.get("category"),
+      amount: formData.get("amount")
     }
     postTransaction(newTransaction)
 
